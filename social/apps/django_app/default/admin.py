@@ -19,22 +19,25 @@ class UserSocialAuthOption(admin.ModelAdmin):
     """Social Auth user options"""
     list_display = ('id', 'user', 'provider', 'uid')
     search_fields = user_search_fields
-    list_filter = ('provider',)
-    raw_id_fields = ('user',)
+    # disable queries that require indexes that GAE does not have
+    #list_filter = ('provider',)
+    #raw_id_fields = ('user',)
     list_select_related = True
 
 
 class NonceOption(admin.ModelAdmin):
     """Nonce options"""
     list_display = ('id', 'server_url', 'timestamp', 'salt')
-    search_fields = ('server_url',)
+    # disable queries that require indexes that GAE does not have
+    #search_fields = ('server_url',)
 
 
 class AssociationOption(admin.ModelAdmin):
     """Association options"""
     list_display = ('id', 'server_url', 'assoc_type')
-    list_filter = ('assoc_type',)
-    search_fields = ('server_url',)
+    # disable queries that require indexes that GAE does not have
+    #list_filter = ('assoc_type',)
+    #search_fields = ('server_url',)
 
 
 admin.site.register(UserSocialAuth, UserSocialAuthOption)
